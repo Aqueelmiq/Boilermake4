@@ -15,11 +15,51 @@ router.get('/reminder', function(req, res) {
   });
 });
 
-router.get('/user/:id', function(req, res) {
-  User.find({id:req.params.id}, function(err,user){
-    res.json({'reminder': user.reminderList});
+router.get('/user', function(req, res) {
+  User.find({}, function(err,users){
+    res.json({'users': users});
   });
 });
+
+router.get('/user/:id', function(req, res) {
+  User.findOne({_id:req.params.id}, function(err, user){
+    res.json({'user': user});
+  });
+});
+
+router.post('/user', function(req, res) {
+  var user = req.body;
+  User.create(user, function(err,user){
+    res.json({'user': user});
+  });
+});
+
+router.post('/user/:id/reminder', function(req, res) {
+  var reminder = req.body;
+  createReminder(reminder.message, reminder.time, req.params.id);
+});
+
+router.put('reminder/complete/:rid', function(req, res) {
+  var reminder = req.body;
+  completeReminder(req.params.rid);
+});
+
+router.delete('reminder/complete/:rid', function(req, res) {
+  var reminder = req.body;
+  cancelReminder(req.params.rid);
+});
+
+router.post('users/:id/friends/:fid', function(req, res) {
+  var reminder = req.body;
+  addFriend(req.params.id, req.params.fid);
+});
+
+router.delete('users/:id/friends/:fid', function(req, res) {
+  var reminder = req.body;
+  removeFriend(req.params.id, req.params.fid);
+});
+
+
 /*
 //end new changes
 router.post('/reminder', function(req, res) {
@@ -48,8 +88,9 @@ var createUser = function(i_userName,i_password,i_name){
     notificationList:[]
   }
   User.create(newUser, function(err, newUser){
+    console.log("User "+ newUser.userName +" Created");
     });
-  console.log("User "+ newUser.userName +" Created");
+
 };
 
 
@@ -62,9 +103,11 @@ var createReminder = function(i_message,i_time,reqID){
     userID:reqID
   }
   Reminder.create(newReminder, function(err, returnedReminder){
-    User.find({id:returnedReminder.id}, function(err,returnedUser){
-        returnedUser.reminderList.push(returnedReminder.id);
-        User.create(user, function(err, returnedUser){});
+    User.find({_id:returnedReminder.userID}, function(err,returnedUser){
+        console.log(returnedUser.reminderList);
+        returnedUser.reminderList.append("Hi");
+        User.update({}, returnedUser, function(err) {});
+        //User.update(user, function(err, returnedUser){});
         console.log("Reminder "+returnedReminder.name+" Created for " + returnedUser.userName);
     });
   });
@@ -73,57 +116,69 @@ var createReminder = function(i_message,i_time,reqID){
 
 function completeReminder(reminderID){
     //marks as complete
-  Reminder.find({id:reminderID}, function(err,returnedReminder){
+  Reminder.find({_id:reminderID}, function(err,returnedReminder){
       returnedReminder.status=false;
-      Reminder.create(returnedReminder, function(err, returnedUser){
+      returnedReminder.save(function(err) {
         console.log("Reminder "+returnedReminder.name+" completed");
       });
+
+    /*  Reminder.create(returnedReminder, function(err, returnedUser){
+        console.log("Reminder "+returnedReminder.name+" completed");
+      }); */
     });
 };
 
 
 function cancelReminder(reminderID){
   //deletes reminder
-  Reminder.delete({id:reminderID}, function(err,returnedReminder) {
-    User.find({id:reminderID},function(err,returnedUser){
+  Reminder.delete({_id:reminderID}, function(err,returnedReminder) {
+    User.find({_id:reminderID},function(err,returnedUser){
        returnedUser.reminderList.delete(reminderID);
-       console.log("Reminder ID"+ reminderID +"cancelled");
+       returnedUser.save(function(err) {
+         console.log("Reminder ID"+ reminderID +"cancelled");
+       });
     });
   });
 };
 
 function addFriend(senderID, recieverID){
-   User.find({id:senderID}, function(err,returnedUser){
+   User.find({_id:senderID}, function(err,returnedUser){
       returnedUser.friendsList.push(recieverID);
-      User.create(returnedUser, function(err, returnedUser){});
-      console.log("Friend "+ returnedUser.userName +" added to sender");
-        User.find({id:recieverID}, function(err,returnedUser2){
-          returnedUser2.friendsList.push(senderID);
-          User.create(returnedUser2user, function(err, returnedUser2){});
-          console.log("Friend "+ returnedUser2.userName +" added to reciever");
-        });
-   };
+      returnedUser.save(function(err) {
+        console.log("Friend "+ returnedUser.userName +" added to sender");
+      });
+   });
+   User.find({_id:recieverID}, function(err,returnedUser2){
+     returnedUser2.friendsList.push(senderID);
+     returnedUser2.save(function(err) {
+       console.log("Friend "+ returnedUser2.userName +" added to reciever");
+     });
+   });
 };
 
 function removeFriend(senderID, recieverID){
-  User.find({id:senderID}, function(err,returnedUser){
-     returnedUser.friendsList.delte(recieverID);
-     User.create(returnedUser, function(err, returnedUser){});
-     console.log("Friend "+ returnedUser.userName +" removed from sender");
-       User.find({id:recieverID}, function(err,returnedUser2){
-         returnedUser2.friendsList.delete(senderID);
-         User.create(returnedUser2user, function(err, returnedUser2){});
-         console.log("Friend  "+ returnedUser2.userName +" deleted from reciever");
-       });
-  };
+
+  User.find({_id:senderID}, function(err,returnedUser){
+
+     returnedUser.friendsList = returnedUser.friendsList.filter(item => item !== recieverID);
+     returnedUser.save(function(err) {
+       console.log("Friend "+ returnedUser.userName +" removed from sender");
+     });
+  });
+  User.find({_id:recieverID}, function(err,returnedUser2){
+    returnedUser2.friendsList = returnedUser2.friendsList.filter(item => item !== recieverID);
+    returnedUser2.save(function(err) {
+      console.log("Friend "+ returnedUser2.userName +" removed from reciever");
+    });
+  });
 
 };
 
-
-function addNotification(notifyReminder, senderID, recieverID){
-  //when system clock = time display message
-  createReminder(notifyReminder.name,notifyReminder.time,recieverID);
-  console.log(senderID +" created a reminder for "+ recieverID);
+function addNotification(remID, senderID, recieverID){
+  Reminder.find({_id: remID}, function(reminder, err) {
+    createReminder(reminder.name, reminder.time, recieverID);
+    console.log(senderID +" created a reminder for "+ recieverID);
+  });
 
 };
 

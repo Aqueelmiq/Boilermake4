@@ -10,3 +10,5 @@ mongoose.connect('mongodb://localhost/Hack', function (err) {
       console.log("Connected");
   }
 });
+
+// mongo Hack --eval "db.dropDatabase()"
