@@ -16,7 +16,7 @@ router.get('/reminder', function(req, res) {
 });
 
 router.get('/user/:id', function(req, res) {
-  User.find({id=req.params.id}, function(err,user){
+  User.find({id:req.params.id}, function(err,user){
     res.json({'reminder': user.reminderList});
   });
 });
@@ -46,7 +46,7 @@ var createReminder = function(message,time){
   }
   Reminder.create(newReminder, function(err, returnedReminder){
     console.log("Reminder Created");
-    User.find({id=retrunedReminder.id}, function(err,user){
+    User.find({id:returnedReminder.id}, function(err,user){
         user.reminderList.push(returnedReminder.id);
         User.create(user, function(err, returnedUser){});
     });
@@ -56,7 +56,7 @@ var createReminder = function(message,time){
 
 function completeReminder(reminderID){
     //marks as complete
-  Reminder.find({id=reminderID}, function(err,returnedReminder){
+  Reminder.find({id:reminderID}, function(err,returnedReminder){
       returnedRemider.status=false;
       console.log("Reminder Completed");
       Reminder.create(returnedRemider, function(err, returnedUser){console.log("complete reminder called");});
@@ -66,10 +66,11 @@ function completeReminder(reminderID){
 
 function cancelReminder(reminderID){
   //deletes reminder
-  Reminder.delete({id=reminderID}, function(err,returnedReminder){
-    User.find({id=returnedReminder.userID},function(err,user){
+  Reminder.delete({id:reminderID}, function(err,returnedReminder) {
+    User.find({id:returnedReminder.userID},function(err,user){
        user.reminderList.delete(returnedReminder.id)
     });
+  });
 };
 
 /*
