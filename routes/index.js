@@ -36,27 +36,74 @@ router.post('/user', function(req, res) {
 
 router.post('/user/:id/reminder', function(req, res) {
   var reminder = req.body;
-  createReminder(reminder.message, reminder.time, req.params.id);
+  reminder.userID = req.params.id;
+  Reminder.create(reminder, function(err, rRem){
+    User.findOne({_id:req.params.id}, function(err, rUser){
+        rUser.reminderList.push(rRem._id);
+        res.json("Reminder "+rRem.name+" Created for " + rUser.name);
+    });
+  });
 });
 
 router.put('reminder/complete/:rid', function(req, res) {
   var reminder = req.body;
-  completeReminder(req.params.rid);
+  Reminder.find({_id:reminderID}, function(err,returnedReminder){
+      returnedReminder.status=false;
+      returnedReminder.save(function(err) {
+        res.json("Reminder "+returnedReminder.name+" completed");
+      });
+    });
 });
 
 router.delete('reminder/complete/:rid', function(req, res) {
   var reminder = req.body;
-  cancelReminder(req.params.rid);
+  Reminder.delete({_id:req.params.id}, function(err,returnedReminder) {
+    User.find({_id:returnedReminder.userID},function(err,returnedUser){
+       returnedUser.reminderList.splice(returnedUser.reminderList.indexOf(req.params.id));
+       returnedUser.save(function(err) {
+         res.json("Reminder ID"+ reminderID +"cancelled");
+       });
+    });
+  });
 });
 
 router.post('users/:id/friends/:fid', function(req, res) {
   var reminder = req.body;
-  addFriend(req.params.id, req.params.fid);
+  var senderID = req.params.id;
+  var recieverID = req.params.fid;
+  User.find({_id:senderID}, function(err,returnedUser){
+
+     returnedUser.friendsList = returnedUser.friendsList.filter(item => item !== recieverID);
+     returnedUser.save(function(err) {
+       User.find({_id:recieverID}, function(err,returnedUser2){
+         returnedUser2.friendsList = returnedUser2.friendsList.filter(item => item !== recieverID);
+         returnedUser2.save(function(err) {
+           res.json("Friend "+ returnedUser2.userName +" removed from reciever\n" + "Friend "+ returnedUser.userName +" removed from sender");
+         });
+       });
+     });
+  });
+
 });
 
 router.delete('users/:id/friends/:fid', function(req, res) {
   var reminder = req.body;
-  removeFriend(req.params.id, req.params.fid);
+  var senderID = req.params.id;
+  var recieverID = req.params.fid;
+  User.find({_id:senderID}, function(err,returnedUser){
+
+     returnedUser.friendsList = returnedUser.friendsList.filter(item => item !== recieverID);
+     returnedUser.save(function(err) {
+     });
+
+     User.find({_id:recieverID}, function(err,returnedUser2){
+       returnedUser2.friendsList = returnedUser2.friendsList.filter(item => item !== recieverID);
+       returnedUser2.save(function(err) {
+         res.json("Friend "+ returnedUser2.userName +" removed from reciever\n" + "Friend "+ returnedUser.userName +" removed from sender");
+       });
+     });
+  });
+
 });
 
 
@@ -102,10 +149,10 @@ var createReminder = function(i_message,i_time,reqID){
     status:true,
     userID:reqID
   }
+
   Reminder.create(newReminder, function(err, returnedReminder){
-    User.find({_id:returnedReminder.userID}, function(err,returnedUser){
-        console.log(returnedUser.reminderList);
-        returnedUser.reminderList.append("Hi");
+    User.find({_id:returnedReminder.userID}, function(err, returnedUser){
+        console.log(returnedReminder);
         User.update({}, returnedUser, function(err) {});
         //User.update(user, function(err, returnedUser){});
         console.log("Reminder "+returnedReminder.name+" Created for " + returnedUser.userName);
@@ -121,12 +168,10 @@ function completeReminder(reminderID){
       returnedReminder.save(function(err) {
         console.log("Reminder "+returnedReminder.name+" completed");
       });
-
-    /*  Reminder.create(returnedReminder, function(err, returnedUser){
-        console.log("Reminder "+returnedReminder.name+" completed");
-      }); */
     });
 };
+
+//05LZ6XgDasNq2Peq
 
 
 function cancelReminder(reminderID){
