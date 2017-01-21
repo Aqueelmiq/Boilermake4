@@ -1,10 +1,12 @@
 'use strict'
+
 var mongoose = require('mongoose');
+
 var notificationSchema = new mongoose.Schema({
-  notificationTitle:String,
-  notificationTime:Date,
-  
+  title:String,
+  time:String
 });
 
-var model = mongoose.model('notification',notificationSchema);
+var model = mongoose.model('Notify', notificationSchema);
+
 module.exports = model;
