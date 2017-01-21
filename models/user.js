@@ -5,7 +5,9 @@ var userSchema = new mongoose.Schema({
   userName:String,
   password:String,
   name:String,
-  friendsList:Array
+  friendsList:Array,
+  reminderList:Array,
+  notificationList:Array
 });
 
 var model = mongoose.model('user', userSchema);
