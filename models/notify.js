@@ -4,7 +4,8 @@ var mongoose = require('mongoose');
 
 var notificationSchema = new mongoose.Schema({
   title:String,
-  time:String
+  time:String,
+  reminderID
 });
 
 var model = mongoose.model('Notify', notificationSchema);

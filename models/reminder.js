@@ -5,7 +5,7 @@ var reminderSchema = new mongoose.Schema({
   name:String,
   time:String,
   status:Boolean,
-  userID:Number
+  userID:String
 });
 
 var model = mongoose.model('Reminder', reminderSchema);

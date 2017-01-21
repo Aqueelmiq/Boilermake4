@@ -37,6 +37,21 @@ router.post('/hello', function(req, res) {
 });
 
 
+var createUser = function(i_userName,i_password,i_name){
+  //saves the reminder and the alarm to databsei
+  var newUser ={
+    userName:i_userName,
+    password:i_password,
+    name:i_name,
+    friendsList:[],
+    reminderList:[],
+    notificationList:[]
+  }
+  User.create(newUser, function(err, newUser){
+    });
+  };
+
+
 var createReminder = function(message,time){
   //saves the reminder and the alarm to databse
   var newReminder ={
@@ -45,10 +60,10 @@ var createReminder = function(message,time){
     status:true
   }
   Reminder.create(newReminder, function(err, returnedReminder){
-    console.log("Reminder Created");
-    User.find({id:returnedReminder.id}, function(err,user){
-        user.reminderList.push(returnedReminder.id);
+    User.find({id:returnedReminder.id}, function(err,returnedUser){
+        returnedUser.reminderList.push(returnedReminder.id);
         User.create(user, function(err, returnedUser){});
+        console.log("Reminder Created");
     });
   });
 
@@ -58,8 +73,9 @@ function completeReminder(reminderID){
     //marks as complete
   Reminder.find({id:reminderID}, function(err,returnedReminder){
       returnedRemider.status=false;
-      console.log("Reminder Completed");
-      Reminder.create(returnedRemider, function(err, returnedUser){console.log("complete reminder called");});
+      Reminder.create(returnedRemider, function(err, returnedUser){
+        console.log("complete reminder called");
+      });
     });
 };
 
@@ -67,14 +83,41 @@ function completeReminder(reminderID){
 function cancelReminder(reminderID){
   //deletes reminder
   Reminder.delete({id:reminderID}, function(err,returnedReminder) {
-    User.find({id:returnedReminder.userID},function(err,user){
-       user.reminderList.delete(returnedReminder.id)
+    User.find({id:returnedReminder.userID},function(err,returnedUser){
+       returnedUser.reminderList.delete(returnedReminder.id);
+       console.log("Reminder cancelled");
     });
   });
 };
 
+function addFriend(senderID, recieverID){
+   User.find({id:senderID}, function(err,returnedUser){
+      returnedUser.friendsList.push(recieverID);
+      User.create(returnedUser, function(err, returnedUser){});
+      console.log("Friend Added to sender");
+        User.find({id:recieverID}, function(err,returnedUser2){
+          returnedUser2.friendsList.push(senderID);
+          User.create(returnedUser2user, function(err, returnedUser2){});
+          console.log("Friend Added to reciever");
+        });
+   };
+};
+
+function removeFriend(senderID, recieverID){
+  User.find({id:senderID}, function(err,returnedUser){
+     returnedUser.friendsList.delte(recieverID);
+     User.create(returnedUser, function(err, returnedUser){});
+     console.log("Friend removed from sender");
+       User.find({id:recieverID}, function(err,returnedUser2){
+         returnedUser2.friendsList.delete(senderID);
+         User.create(returnedUser2user, function(err, returnedUser2){});
+         console.log("Friend deleted from reciever");
+       });
+  };
+
+};
 /*
-function pushNotification(reminder, users){
+function addNotification(reminder, users){
   //when system clock = time display message
 
 };
@@ -84,14 +127,8 @@ function receiveNotification(reminder, sender){
 
 };
 
-function addFriend(sender){
-  //when system clock = time display message
 
-};
-function removeFriend(sender){
-  //when system clock = time display message
 
-};
 */
 
 module.exports = router;
