@@ -9,19 +9,25 @@ var Hi = require('../models/hi');
 
 /* GET home page. */
 
-router.get('/reminder', function(req, res) {
+router.get('/reminders', function(req, res) {
   Reminder.find({}, function(err,reminders){
     res.json({'reminders': reminders});
   });
 });
 
-router.get('/user', function(req, res) {
+router.get('/users/name/:txt', function(req, res) {
+  User.findOne({name: new RegExp(req.params.txt, "i")}, function(err,user){
+    res.json({'user': user});
+  });
+});
+
+router.get('/users', function(req, res) {
   User.find({}, function(err,users){
     res.json({'users': users});
   });
 });
 
-router.get('/user/:id', function(req, res) {
+router.get('/users/:id', function(req, res) {
   User.findOne({_id:req.params.id}, function(err, user){
     res.json({'user': user});
   });
@@ -30,7 +36,7 @@ router.get('/user/:id', function(req, res) {
 router.post('/users', function(req, res) {
   var user = req.body;
   User.create(user, function(err,user){
-    res.json({'user': user});
+    res.json({'id': user._id});
   });
 });
 
@@ -41,13 +47,13 @@ router.post('/users/:id/reminder', function(req, res) {
     User.findOne({_id:req.params.id}, function(err, rUser){
         rUser.reminderList.push(rRem._id);
         rUser.save(function(err, updated){
-          res.json("Reminder "+rRem.name+" Created for " + rUser.name);
+          res.json({'id': rRem._id});
         })
     });
   });
 });
 
-router.put('/reminder/complete/:rid', function(req, res) {
+router.put('/reminders/complete/:rid', function(req, res) {
   var reminder = req.body;
   Reminder.findById(req.params.rid, function(err, returnedReminder){
       returnedReminder.status=false;
@@ -57,7 +63,7 @@ router.put('/reminder/complete/:rid', function(req, res) {
     });
 });
 
-router.delete('/reminder/complete/:rid', function(req, res) {
+router.delete('/reminders/complete/:rid', function(req, res) {
   var reminder = req.body;
   Reminder.delete({_id:req.params.rid}, function(err,returnedReminder) {
     User.find({_id:returnedReminder.userID},function(err,returnedUser){
@@ -70,7 +76,6 @@ router.delete('/reminder/complete/:rid', function(req, res) {
 });
 
 router.post('/users/:id/friends/:fid', function(req, res) {
-  var reminder = req.body;
   var senderID = req.params.id;
   var recieverID = req.params.fid;
   User.findOne({_id:senderID}, function(err,returnedUser){
@@ -89,7 +94,6 @@ router.post('/users/:id/friends/:fid', function(req, res) {
 });
 
 router.delete('/users/:id/friends/:fid', function(req, res) {
-  var reminder = req.body;
   var senderID = req.params.id;
   var recieverID = req.params.fid;
   User.findOne({_id:senderID}, function(err,returnedUser){
