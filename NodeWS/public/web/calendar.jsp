@@ -49,7 +49,7 @@
     
     <div id="header">
 
-            <a href="home.jsp"><img style="max-height: 99%; max-width: 99%;" class="fit" src="A_Alexa_internet_logo.png" alt="Logo"></a>
+        <a href="home.jsp"><img style="max-height: 99%; max-width: 99%;" class="fit" src="rmind.png" alt="Logo"></a>
 	</div>
     
     <div id="body" style="width: 30%; float:left" class="table-responsive">

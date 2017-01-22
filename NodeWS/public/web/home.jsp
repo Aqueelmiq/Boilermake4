@@ -17,7 +17,7 @@
 <body>
 	<div id="header">
 
-            <a href="home.jsp"><img style="max-height: 99%; max-width: 99%;" class="fit" src="A_Alexa_internet_logo.png" alt="Logo"></a>
+            <a href="home.jsp"><img style="max-height: 99%; max-width: 99%;" class="fit" src="rmind.png" alt="Logo"></a>
 	</div>
 	<div id="body">
 		<div>
@@ -32,7 +32,7 @@
                                     <a href="Add Friends.jsp" class="link1">Friends</a>
 				</li>
 				<li>
-					<a href="about.html" class="link2">About</a>
+                                    <a href="calendar.jsp" class="link2">Calendar</a>
 				</li>
 				<li>
 					<a href="contact.html" class="link1">Contact</a>
@@ -69,8 +69,8 @@ function notifyMe() {
 }
 
 </script>
-                            	<h1><span>Advance Alexa</span></h1>
-				<h2>Hi, how are you doing today? How can I help you?..!!!!</h2>
+<!--                            	<h1><span>rmind</span></h1>-->
+                                <h2 style="color: black">Hi, how are you doing today? How can I help you?..!!!!</h2>
                                 
                                 <!-- CSS Styles -->
 <style>
@@ -124,7 +124,7 @@ function notifyMe() {
 		<div>
 			<div id="newsletter">
 				<h3>Newsletter</h3>
-				<p>
+                                <p style="color: black">
 					Subscribe to our news letter.
 				</p>
 				<form action="index.html">

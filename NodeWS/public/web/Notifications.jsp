@@ -15,10 +15,29 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        
+        .body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #286090;
+    background-color: #fff;
+}
+
+.th{
+    
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #286090;
+    background-color: #fff;
+}
+    </style>
 </head>
 <body>
 	<div id="header">
-            <a href="index.html"><img style="max-height: 99%; max-width: 99%;" src="A_Alexa_internet_logo.png" alt="Logo"></a>
+            <a href="index.html"><img style="max-height: 99%; max-width: 99%;" src="rmind.png" alt="Logo"></a>
 	</div>
     <div id="body" style="width: 20%; float:left" class="table-responsive">
         <div style="width: 70%;float: left" class="table-responsive" >
@@ -33,7 +52,7 @@
                                     <a href="Add Friends.jsp" class="link1">Friends</a>
 				</li>
 				<li>
-					<a href="about.html" class="link2">About</a>
+                                    <a href="calendar.jsp" class="link2">Calendar</a>
 				</li>
 				<li>
 					<a href="contact.html" class="link1">Contact</a>
