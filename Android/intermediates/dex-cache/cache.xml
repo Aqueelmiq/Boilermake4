@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
+        <dex dex="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.1.0_55220a36454fe10b1314c3a6a7fd6aa5a24e8c4e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ACHAL LATHIA\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\25.1.0\support-annotations-25.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
+        <dex dex="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.1.0_bc133b7fb73fb06ad20a70f268647190c8d998b3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
+        <dex dex="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.1.0_c593b0295fd9979fbed27ec92123c05f8d2c2083\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="aee64634871d88a419d59eb743c1258a60f19700">
+        <dex dex="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.1.0_4273568d6df108a9d596718b167c8f92c1403169\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
+        <dex dex="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.1.0_15f5e53bf47364f57356bbb1716190ba1f3b218f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
+        <dex dex="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.1.0_6b81154812c516eee4f557997c0c34ecadb73bc5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9e590bfe5865ad37eeff6db031f57f290eb9307b">
+        <dex dex="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_6fb5bd122e01725e344bd476b2b665f394987309\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
+        <dex dex="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.1.0_7c187b90ecc773fc42d1b92bb8d4d9bb5baa606c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
+        <dex dex="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.1.0_463ffcabc756a72157cb834fe92cf72cde77c70f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.1.0_b116eb39d496c2759ca33cd77dfd221aaaae51d2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
+        <dex dex="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.1.0_9f011d7427484ef4122c200bc89ae1a20db05cee\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a29c86a13339a4c3d5898152db1a70b439adbf2f">
+        <dex dex="C:\Users\ACHAL LATHIA\Downloads\AdvanceAlexa\Boilermake\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_dfc59af54759f5c54bd62a9d9f3186a022151c28\classes.dex" />
+    </item>
+
+</items>
