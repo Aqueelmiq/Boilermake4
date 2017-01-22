@@ -40,6 +40,12 @@ router.post('/users', function(req, res) {
   });
 });
 
+router.get('/users/:id/reminder', function(req, res) {
+  Reminder.find({userID: req.params.id}, function(err, reminders){
+    res.json({'reminders': reminders});
+  });
+});
+
 router.post('/users/:id/reminder', function(req, res) {
   var reminder = req.body;
   reminder.userID = req.params.id;
