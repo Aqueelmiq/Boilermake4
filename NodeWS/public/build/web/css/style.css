@@ -1,6 +1,6 @@
 /* Website template by freewebsitetemplates.com */
 body {
-	background: url(../images/bg-body.png) repeat;
+	background: white repeat;
 	color: #d1d3d4;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
@@ -80,10 +80,10 @@ p a.more {
 	display: block;
 }
 #body {
-	background: url(../images/bg-wave.png) repeat;
+	background: white repeat;
 }
 #body > div {
-	background: url(../images/bg-content.png) repeat;
+	background: white repeat;
 	margin: 0 auto;
 	overflow: hidden;
 	padding: 47px 10px;
@@ -131,7 +131,7 @@ p a.more {
 	width: 700px;
 }
 #body div h1 {
-	color: #fff799;
+	color: #001f64;
 	font-family: 'ultraregular';
 	font-size: 60px;
 	font-weight: normal;
@@ -192,7 +192,7 @@ p a.more {
 #body div #newsblog div div h3,
 #body div #about div div.section h3,
 #body div #contact h3 {
-	color: #fff799;
+	color: #001f64;
 	font-family: 'arvobold';
 	font-size: 18px;
 	font-weight: normal;

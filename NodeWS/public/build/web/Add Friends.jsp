@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div id="header">
-            <a href="index.html"><img style="max-height: 99%; max-width: 99%;" src="A_Alexa_internet_logo.png" alt="Logo"></a>
+            <a href="index.html"><img style="max-height: 99%; max-width: 99%;" src="rmind.png" alt="Logo"></a>
 	</div>
 	<div id="body">
 		<div>
@@ -29,7 +29,7 @@
                                     <a href="Friends.jsp" class="link1">Friends </a>
 				</li>
 				<li>
-					<a href="about.html" class="link2">About</a>
+                                    <a href="calendar.jsp" class="link2">Calendar</a>
 				</li>
 				<li>
 					<a href="contact.html" class="link1">Contact</a>
@@ -42,52 +42,29 @@
 							 <a href="newsblog.html"><img src="images/surfing5.png" alt="Image"></a>
 						</div>
 						<div>
-							<h2><a href="newsblog.html">This is just a place holder</a></h2>
+							<h2><a href="newsblog.html">meeta morris</a></h2>
 						</div>
 					</li>
 					<li>
 						<div>
-							<span>Sept 2023</span> <a href="newsblog.html"><img src="images/family.png" alt="Image"></a>
+							 <a href="newsblog.html"><img src="images/family.png" alt="Image"></a>
 						</div>
 						<div>
-							<h2><a href="newsblog.html">This website template is for free</a></h2>
-							<p>
-								This website template is for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you&#39;re free to use this website template without linking back to us. This is just a place holder, so you can see what the site would look like. This website template is for free. You can replace all this text with your own text. You can remove any link to our website from this website template.
-							</p>
+							<h2><a href="newsblog.html">Rishabh Shah</a></h2>
+							
 						</div>
 					</li>
 					<li>
 						<div>
-							<span>Sept 2023</span> <a href="newsblog.html"><img src="images/surfing6.png" alt="Image"></a>
+							 <a href="newsblog.html"><img src="images/surfing6.png" alt="Image"></a>
 						</div>
 						<div>
-							<h2><a href="newsblog.html">This is just a place holder</a></h2>
-							<p>
-								This website template is for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you&#39;re free to use this website template without linking back to us. This is just a place holder, so you can see what the site would look like. This website template is for free. You can replace all this text with your own text. You can remove any link to our website from this website template.
-							</p>
+							<h2><a href="newsblog.html">Aqueel</a></h2>
+							
 						</div>
 					</li>
 				</ul>
-				<div>
-					<div>
-						<h3>Recent Post</h3>
-						<p>
-							<a href="newsblog.html">This is a place holder, so you can see what the site would look like.</a>
-						</p>
-					</div>
-					<div>
-						<h3>Popular Post</h3>
-						<p>
-							<a href="newsblog.html">This is a place holder, so you can see what the site would look like.</a>
-						</p>
-					</div>
-					<div>
-						<h3>Archive</h3>
-						<p>
-							<a href="newsblog.html">This is a place holder, so you can see what the site would look like.</a>
-						</p>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	</div>
