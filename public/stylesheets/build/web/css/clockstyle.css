@@ -1,0 +1,308 @@
+/*
+Author: Designmaz
+Author URL: https://www.designmaz.net
+License URL: https://www.designmaz.net/licence/
+*/
+/* reset */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+ol,ul{list-style:none;margin:0px;padding:0px;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+/* start editing from here */
+a{text-decoration:none;}
+.txt-rt{text-align:right;}/* text align right */
+.txt-lt{text-align:left;}/* text align left */
+.txt-center{text-align:center;}/* text align center */
+.float-rt{float:right;}/* float right */
+.float-lt{float:left;}/* float left */
+.clear{clear:both;}/* clear float */
+.pos-relative{position:relative;}/* Position Relative */
+.pos-absolute{position:absolute;}/* Position Absolute */
+.vertical-base{	vertical-align:baseline;}/* vertical align baseline */
+.vertical-top{	vertical-align:top;}/* vertical align top */
+nav.vertical ul li{	display:block;}/* vertical menu */
+nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
+img{max-width:100%;}
+/*end reset*/
+html, body{
+	font-family: 'Maven Pro', sans-serif;
+	 background:#443266;
+
+}
+body a{
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+	text-decoration:none;
+}
+body h1 {
+    color: #fff;
+    text-align: center;
+    padding: 2em 0 0em 0;
+    font-size: 3em;
+    font-weight: 700;
+}
+.main {
+    margin:6em auto 7em;
+    text-align: center;
+	width:60%;
+}
+.cloc {
+    float: left;
+    width: 50%;
+}
+.clck-btns{
+	text-align:center;
+	margin-top:0.5em;
+}
+.clck-btns a{
+	text-decoration: none;
+    color: #ff1744;
+    font-size: 1em;
+    display: inline-block;
+   margin:0 18px;
+}
+/*----*/
+.mini-cal {
+    float: right;
+    width:50%;
+	background:#fff;
+}
+.calender {
+    padding: 1em;
+}
+/*--copy-right--*/
+.copy-right {
+      margin: 5em 0 3em 0;
+}
+.copy-right p {
+        color: #fff;
+    font-size: 1em;
+    font-weight: 400;
+    margin: 0 auto;
+    text-align: center
+}
+.copy-right p a {
+	  color:#BA9AF7;
+}
+.copy-right p a:hover {
+	text-decoration: underline;
+}
+/*--//copy-right--*/
+/*--start-responsive-design--*/
+@media (max-width:1600px){
+
+}
+@media (max-width:1440px){
+
+}
+@media (max-width:1366px){
+
+}
+@media (max-width:1280px){
+.main {
+    width: 64%;
+}
+}
+@media (max-width:1024px){
+.main {
+    width: 78%;
+	margin: 6em auto 0em;
+}
+.calender {
+    padding: 0.87em;
+}
+.rotatingWrapper {
+    left: 112px ! important;
+    top: 133px ! important;
+}
+}
+@media (max-width:991px){
+.main {
+	margin: 6em auto 0em;
+	text-align: center;
+	width: 86%;
+}
+.copy-right {
+	margin: 8em 0 3em 0;
+}
+}
+@media (max-width:768px){
+.main {
+    margin: 3em auto 0em;
+    width: 90%;
+}
+.clock_container {
+    width: 325px ! important;
+}
+.clockHolder {
+    width: 325px ! important;
+    padding: 6.67em 0;
+}
+.rotatingWrapper {
+    left: 85px ! important;
+    top: 133px ! important;
+}
+.copy-right {
+	margin: 8em 0 3em 0;
+}
+body h1 {
+	padding: 1em 0 0em 0;
+	font-size: 3em;
+}
+.calender {
+	padding: 1em 0.5em;
+}
+.digital{
+	padding:0.44em 0 ! important;
+}
+}
+@media (max-width:736px){
+.cloc {
+    float: left;
+    width: 100%;
+}
+.clock_container {
+    width: 380px ! important;
+}
+.clockHolder {
+    width: 380 ! important;
+    padding: 6.67em 0;
+}
+.rotatingWrapper {
+    left: 86px ! important;
+    top: 133px ! important;
+}
+.mini-cal {
+    float: right;
+    width: 100%;
+	margin:2em 0 0;
+}
+.main {
+    width: 53%;
+}
+.copy-right {
+    margin: 3em 0 3em 0;
+}
+}
+@media (max-width:667px){
+.main {
+    width: 59%;
+}
+.rotatingWrapper {
+    left: 84px ! important;
+    top: 133px ! important;
+}
+}
+@media (max-width:640px){
+.main {
+    width: 61%;
+}
+}
+@media (max-width:568px){
+body h1 {
+    font-size: 2.5em;
+}
+.main {
+    width: 69%;
+}
+}
+@media (max-width:480px){
+.copy-right p {
+	font-size: 0.9em;
+	line-height: 1.9em;
+	padding: 0 1em;
+}
+.main {
+    width: 82%;
+}
+body h1 {
+    padding: 1em 0 0em 0;
+    font-size: 2.2em;
+}
+}
+@media (max-width:414px){
+body h1 {
+	padding: 1em 0 0em 0;
+	font-size: 2em;
+}
+.clock_container {
+    width: 325px ! important;
+}
+.cal1 .clndr .clndr-controls .clndr-control-button .clndr-next-button {
+    top: 14px ! important;
+}
+.cal1 .clndr .clndr-controls .clndr-control-button .clndr-previous-button {
+    top: 14px ! important;
+}
+.clockHolder {
+    padding: 4.67em 0;
+}
+.rotatingWrapper {
+    left: 86px ! important;
+    top: 134px ! important;
+}
+}
+@media (max-width:384px){
+.rotatingWrapper {
+    left: 84px ! important;
+    top: 133px ! important;
+}
+}
+@media (max-width:375px){
+body h1 {
+	padding: 1em 0 0em 0;
+	font-size: 2.1em;
+}
+.main {
+	margin: 2em auto 0em;
+	text-align: center;
+	width: 96%;
+}
+.banner-info {
+	margin: 0em 0 1em 1.5em;
+}
+.calender {
+	padding: 0.5em 0.5em;
+}
+.copy-right p {
+    font-size: 0.85em;
+}
+.clock_container {
+   width: 344px ! important;
+}
+.rotatingWrapper {
+    left: 84px ! important;
+    top: 133px ! important;
+}
+}
+@media (max-width:320px){
+body h1 {
+    padding: 1em 0 0em 0;
+    font-size: 1.6em;
+}
+.digital {
+    font-size: 1.5em;
+}
+.main {
+    width: 90%;
+}
+.clock_container {
+    width: 273px ! important;
+}
+.clockHolder {
+    width: 273px ! important;
+    padding: 6.67em 0;
+}
+.rotatingWrapper {
+    left: 60px ! important;
+    top: 75px ! important;
+}
+.copy-right {
+    margin: 2em 0 1em 0;
+}
+}
