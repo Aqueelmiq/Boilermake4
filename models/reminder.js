@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var reminderSchema = new mongoose.Schema({
   name:String,
   time:String,
-  status:Boolean,
+  status: {type: Boolean, default:true},
   userID:String
 });
 

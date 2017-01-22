@@ -27,37 +27,39 @@ router.get('/user/:id', function(req, res) {
   });
 });
 
-router.post('/user', function(req, res) {
+router.post('/users', function(req, res) {
   var user = req.body;
   User.create(user, function(err,user){
     res.json({'user': user});
   });
 });
 
-router.post('/user/:id/reminder', function(req, res) {
+router.post('/users/:id/reminder', function(req, res) {
   var reminder = req.body;
   reminder.userID = req.params.id;
   Reminder.create(reminder, function(err, rRem){
     User.findOne({_id:req.params.id}, function(err, rUser){
         rUser.reminderList.push(rRem._id);
-        res.json("Reminder "+rRem.name+" Created for " + rUser.name);
+        rUser.save(function(err, updated){
+          res.json("Reminder "+rRem.name+" Created for " + rUser.name);
+        })
     });
   });
 });
 
-router.put('reminder/complete/:rid', function(req, res) {
+router.put('/reminder/complete/:rid', function(req, res) {
   var reminder = req.body;
-  Reminder.find({_id:reminderID}, function(err,returnedReminder){
+  Reminder.findById(req.params.rid, function(err, returnedReminder){
       returnedReminder.status=false;
-      returnedReminder.save(function(err) {
-        res.json("Reminder "+returnedReminder.name+" completed");
+      returnedReminder.save(function(err, updated) {
+        res.json("Reminder "+updated.name+" completed");
       });
     });
 });
 
-router.delete('reminder/complete/:rid', function(req, res) {
+router.delete('/reminder/complete/:rid', function(req, res) {
   var reminder = req.body;
-  Reminder.delete({_id:req.params.id}, function(err,returnedReminder) {
+  Reminder.delete({_id:req.params.rid}, function(err,returnedReminder) {
     User.find({_id:returnedReminder.userID},function(err,returnedUser){
        returnedUser.reminderList.splice(returnedUser.reminderList.indexOf(req.params.id));
        returnedUser.save(function(err) {
@@ -67,18 +69,18 @@ router.delete('reminder/complete/:rid', function(req, res) {
   });
 });
 
-router.post('users/:id/friends/:fid', function(req, res) {
+router.post('/users/:id/friends/:fid', function(req, res) {
   var reminder = req.body;
   var senderID = req.params.id;
   var recieverID = req.params.fid;
-  User.find({_id:senderID}, function(err,returnedUser){
+  User.findOne({_id:senderID}, function(err,returnedUser){
 
-     returnedUser.friendsList = returnedUser.friendsList.filter(item => item !== recieverID);
+     returnedUser.friendsList.push(recieverID);
      returnedUser.save(function(err) {
-       User.find({_id:recieverID}, function(err,returnedUser2){
-         returnedUser2.friendsList = returnedUser2.friendsList.filter(item => item !== recieverID);
-         returnedUser2.save(function(err) {
-           res.json("Friend "+ returnedUser2.userName +" removed from reciever\n" + "Friend "+ returnedUser.userName +" removed from sender");
+       User.findOne({_id:recieverID}, function(err,returnedUser2){
+        returnedUser2.friendsList.push(senderID);
+         returnedUser2.save(function(err, updated) {
+           res.json("Friend "+ returnedUser2.userName +" added to reciever " + "Friend "+ returnedUser.userName +" added to sender");
          });
        });
      });
@@ -86,26 +88,27 @@ router.post('users/:id/friends/:fid', function(req, res) {
 
 });
 
-router.delete('users/:id/friends/:fid', function(req, res) {
+router.delete('/users/:id/friends/:fid', function(req, res) {
   var reminder = req.body;
   var senderID = req.params.id;
   var recieverID = req.params.fid;
-  User.find({_id:senderID}, function(err,returnedUser){
+  User.findOne({_id:senderID}, function(err,returnedUser){
 
      returnedUser.friendsList = returnedUser.friendsList.filter(item => item !== recieverID);
-     returnedUser.save(function(err) {
-     });
-
-     User.find({_id:recieverID}, function(err,returnedUser2){
-       returnedUser2.friendsList = returnedUser2.friendsList.filter(item => item !== recieverID);
-       returnedUser2.save(function(err) {
-         res.json("Friend "+ returnedUser2.userName +" removed from reciever\n" + "Friend "+ returnedUser.userName +" removed from sender");
+     returnedUser.save(function(err, updated) {
+       User.findOne({_id:recieverID}, function(err,returnedUser2){
+         returnedUser2.friendsList = returnedUser2.friendsList.filter(item => item !== senderID);
+         returnedUser2.save(function(err, updated) {
+           res.json("Friend "+ returnedUser2.name +" removed from reciever\n" + "Friend "+ returnedUser.name +" removed from sender");
+         });
        });
      });
   });
 
 });
 
+//5883ba7984ee5c093ccdba3f
+//5883ba7d84ee5c093ccdba40
 
 /*
 //end new changes
